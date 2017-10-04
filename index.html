@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Tempest</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type = "text/css" href = "css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/index.js"></script>    
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCm2fYbymtPHliZucAGAA9YuBqSvTtOs-k",
+        authDomain: "tempest-1337.firebaseapp.com",
+        databaseURL: "https://tempest-1337.firebaseio.com",
+        projectId: "tempest-1337",
+        storageBucket: "",
+        messagingSenderId: "524616515014"
+      };
+      firebase.initializeApp(config);
+    </script>
+    
+    <script>console.log(firebase)</script>
+    <script>
+    firebase.auth().onAuthStateChanged(user => {
+        if(!user) {
+            window.location = 'login.html'; //If User is not logged in, redirect to login page
+        }
+    });
+    </script>
+    
+    <script>
+    var popupWindow=null;
+
+    function popup()
+    {
+        popupWindow = window.open('popup.html','name','width=500px,height=1300px');
+    }
+
+    function parent_disable() {
+        if(popupWindow && !popupWindow.closed)
+        popupWindow.focus();
+    }
+    </script>
+   
+</head>
+
+<body>
+    <aside class="sidebar-left-collapse">
+      <a href="#" class="logo"><img border="0" alt="temp" src="assets/logo.png" width="100" height="100"></a>
+      <div class="sidebar-links">
+        <div class="link-blue selected">
+          <a href="#">
+            <i class="fa fa-search"></i>Browse All
+          </a>
+        </div>
+
+        <div class="link-red">
+          <a href="#">
+            <i class="fa fa-heart"></i>My Rooms
+          </a>
+
+          <ul class="sub-links">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+
+        <div class="link-yellow">
+          <a href="#">
+            <i class="fa fa-fire"></i>Popular/Trending
+          </a>
+
+          <ul class="sub-links">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+
+        <div class="link-green">
+          <a href="#">
+            <i class="fa fa-map-marker"></i>Near Me
+          </a>
+
+          <ul class="sub-links">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+        
+        <div class="link-blue">
+          <a href="#">
+            <i class="fa fa-refresh"></i>Matches
+          </a>
+
+          <ul class="sub-links">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+            <li><a href="#">Link 4</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </aside>
+
+    <div class="main-content">
+        <ul>
+
+        </ul>
+      </div>
+    </div>
+    
+    <nav class="navbar navbar-inverse navbar-static-top navbar-custom">
+      <div id="nav" class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brand</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Link</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+            <li onclick="logOut()"><a href="#">Logout</a></li>
+          </ul>
+          
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    
+    <div id="red" class="round buttontxt">+</div>
+    
+    <div class="popup" id="popup1">
+      <div class="container">
+        <div class="item1">Create Room <br> 
+        <div id = "wrapper"> 
+            <form id = "createRoom" action = "/blah"> Room Name:<br>
+                <input type="text" name="room" value = ""><br>  
+            </form>
+        <button type = "submit" onclick = "createRoom()"> Create Room! </button> 
+        </div>   
+        <br> 
+       
+       
+        </div>
+        <div class="item2">Join Room<br><br>
+            <div id = "wrapper1"> 
+                <form id = "joinRoom" action = "/blah"> Room Name:<br>
+                    <input type="text" name="room" value = ""><br> 
+                </form>
+                <button type="submit" onclick="joinRoom()"> Join Room! </button> 
+            </div>   
+        </div> 
+      </div>
+      <a href="#" onclick="console.log('close'); document.getElementById('popup1').style.display='none';">Ok!</a>
+    </div>
+    
+    <p id="rooms"></p>
+</body>
+
+
+</html>
+
+<script>
+$('#red').click(
+    function(){
+        document.getElementById("popup1").style.display="block";
+    }
+  )
+</script>
+
+<script>
+    function logOut() {
+        firebase.auth().signOut().then(function() {
+              // Sign-out successful.
+            }, function(error) {
+              // An error happened.
+            });
+    }
+</script>
+
+<script> 
+    function createRoom() {
+        firebase.auth().onAuthStateChanged(function(user) {
+            if(user) {
+                console.log("logged in");
+                var ref = firebase.database().ref();
+                
+                var name = document.getElementById("createRoom").elements[0].value;
+                var uid = user.uid;
+                var roomRef = ref.child("Rooms");
+                
+                roomRef.push({
+                    name: name,
+                    admins: {uid: uid},
+                    ID: uid
+                });    
+            }
+            else {
+                window.location = "login.html";
+            }
+        });
+    }
+</script>
+
+<script> 
+    function joinRoom() {
+        firebase.auth().onAuthStateChanged(function(user) {
+            if(user) {
+                console.log("logged in");
+                var ref = firebase.database().ref();
+                var joined = false;
+                var name = document.getElementById("joinRoom").elements[0].value;
+                var ref = firebase.database().ref();
+                ref.once("value", function(snapshot) {
+                    var i; 
+                    console.log(snapshot.val()['Rooms']);
+                    for (i in snapshot.val()['Rooms']) {
+                        console.log(snapshot.val()['Rooms'][i]['name']);
+                        if(snapshot.val()['Rooms'][i]['name'] == name && !joined) {
+                            var finalRef = ref.child('Rooms/' + i + '/users/').push();
+                            finalRef.set({
+                                name:user.displayName,
+                                id:user.uid
+                            });
+                            joined = true;
+                        }
+                    }
+                
+                });
+                
+                
+            }
+            else
+            {
+                
+
+               window.location = "login.html";
+                
+            }
+        });
+    }
+</script>
+
+<script> 
+     var text = "";
+     firebase.auth().onAuthStateChanged(function(user) {
+            if(user)
+            {
+
+                
+                var ref = firebase.database().ref();
+                ref.once("value", function(snapshot) {
+                var i; 
+                id = user.uid;
+                for (i in snapshot.val()['Rooms'])
+                {
+                    console.log(i);
+                    if(i != 'uid')
+                    {
+                        console.log(snapshot.val()['Rooms'][i]['users']);
+                        for(j in snapshot.val()['Rooms'][i]['users'])
+                        {
+                           var name = snapshot.val()['Rooms'][i]['name'];
+                            if(snapshot.val()['Rooms'][i]['users'][j]['id'] == id) 
+                               {
+                                console.log(j)
+                                console.log("yay!");
+                                 text += "<div> <div class = 'box'> <form id = 'form_" + name +"' action = '/blah'> Room Name:<br> <div name='room' value = '" + name+ "'> " + name + "</div> <br>";
+                                    text += "</form>";
+                                    text += "<button type = 'submit' onclick = 'enterRoom(\""+name+"\")'> Enter Room! </button> </div>";
+                                    console.log("name:",name);
+                                    console.log("text:", text);
+                                    document.getElementById("rooms").innerHTML = text;
+                                    
+                                }
+                               
+                        }
+                    }
+                
+                }
+                });
+
+                 
+            }
+            else
+            {
+            }
+            });
+    
+</script>
+
+<script>
+function parseURLParams(url) {
+    var queryStart = url.indexOf("?") + 1,
+        queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+        parms = {}, i, n, v, nv;
+
+    if (query === url || query === "") return;
+
+    for (i = 0; i < pairs.length; i++) {
+        nv = pairs[i].split("=", 2);
+        n = decodeURIComponent(nv[0]);
+        v = decodeURIComponent(nv[1]);
+
+        if (!parms.hasOwnProperty(n)) parms[n] = [];
+        parms[n].push(nv.length === 2 ? v : null);
+    }
+    return parms;
+}
+</script>
+
+<script>
+function enterRoom(name) {
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        if(user) {
+            var text;
+            var ref = firebase.database().ref();
+            ref.once("value", function(snapshot) {
+                var i; 
+                id = user.uid;
+                console.log("lolz");
+                for (i in snapshot.val()['Rooms'])
+                {
+                    console.log(i); 
+                    if (snapshot.val()['Rooms'][i]['name'] == name) {
+                        for (j in snapshot.val()['Rooms'][i]['users']) {
+                            if (snapshot.val()['Rooms'][i]['users'][j]['id'] != id) {
+                                console.log("test", snapshot.val()['Rooms'][i]['users'][j]['id']);
+                                var uname = snapshot.val()['Users'][snapshot.val()['Rooms'][i]['users'][j]['id']]['name'];
+                                text += '<div> <div class = "box"> <form id = "form_' + uname +'" action = "/blah"> User:<br> <div name="room" value = "' + uname+'"> ' + uname + '</div> <br>';
+                                text += '</form>';
+                                text += '<button type = "submit"onclick = "match('+uname+')"> Match User! </button> </div>';
+                                document.getElementById("rooms").innerHTML = text;
+                                    
+                            }
+                        }
+                    }
+                }
+            
+            });
+        }
+    });
+}
+</script>
+

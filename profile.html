@@ -1,0 +1,97 @@
+<html>
+
+    <head>
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCm2fYbymtPHliZucAGAA9YuBqSvTtOs-k",
+        authDomain: "tempest-1337.firebaseapp.com",
+        databaseURL: "https://tempest-1337.firebaseio.com",
+        projectId: "tempest-1337",
+        storageBucket: "tempest-1337.appspot.com",
+        messagingSenderId: "524616515014"
+      };
+      firebase.initializeApp(config);
+      
+      var ref = firebase.database().ref();
+
+        ref.on("value", function(snapshot) {
+            console.log(snapshot.val());
+        }, function (error) {
+            console.log("Error: " + error.code);
+        });
+    </script>
+    <script>
+    firebase.auth().onAuthStateChanged(user => {
+        if(!user) {
+            window.location = 'login.html'; //If User is not logged in, redirect to login page
+        }
+    });
+    </script>
+    </head>
+    <form id = "form1"> 
+          Name:<br>
+          <input type="text" name="name" value = "blah"><br>
+
+          Age: <br>
+          <input type="text" name="age">  <br>
+          Blurb:
+        </form>
+        <textarea rows="4" cols="50" name="blurb" form="form1"></textarea> <br>
+         <button type = "submit" onclick = "profileUpdate()"> Submit! </button>
+         
+    
+    <script> 
+    function profileUpdate(){
+    
+        console.log(firebase);
+        firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            var updates = {};
+            var x = document.getElementById("form1").elements[0].value;
+            var id = user.uid;
+            var ref = firebase.database().ref();
+            ref.on("value", function(snapshot) {
+                var i; 
+                for (i in snapshot.val()['Users'])
+                {
+                    if(snapshot.val()['Users'][i]['id'] == id) 
+                       {
+                        //console.log(i);
+                       //console.log(snapshot.val()['Users'][i]['id']);
+                         updates['/Users/'+i+'/name'] = x;
+
+                        updates['/Users/'+i+'/age'] = document.getElementById("form1").elements[1].value;
+                        updates['/Users/'+i+'/Blurb'] = document.getElementById("form1").elements[2].value;
+        
+                        return firebase.database().ref().update(updates);
+                        }
+                    }
+                
+            });
+
+    }
+        
+            
+           /* updates['/Users/0/name'] = x;
+
+            updates['/Users/0/age'] = document.getElementById("form1").elements[1].value;
+            updates['/Users/0/Blurb'] = document.getElementById("form1").elements[2].value;
+        
+        return firebase.database().ref().update(updates);
+        }*/
+        else {
+            
+            window.location = "login.html";
+        }});
+        
+    }
+   
+    </script>
+    
+    
+
+
+
+</html>
